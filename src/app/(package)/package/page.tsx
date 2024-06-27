@@ -1,14 +1,15 @@
+import { fetchPackageList } from '@/lib/package/ServerAPI'
+import { useEmployeeStore } from '@/store/LoginStore'
+import { Metadata } from 'next';
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 
-const fetchData = async (): Promise<Packages[]> => {
-  const res = await fetch('', { cache: 'force-cache' })
-  if (!res.ok) {
-    throw new Error('Failed to fetch package list')
-  }
-  return res.json()
-}
+export const metadata: Metadata = {
+  title: "Package",
+};
+
 
 const PackagePage = () => {
-  const dataPromise = fetchData()
+  const { loginState } = useEmployeeStore()
+  // const dataPromise = fetchPackageList(loginState.empId)
 }

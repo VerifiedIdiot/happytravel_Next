@@ -1,8 +1,10 @@
 export interface LoginInfo {
+  loginState : {
   empId: string
   empName: string
   deptCode: string
   posCode: string
+  }
 }
 
 export enum CRUDStateEnum {
@@ -23,30 +25,11 @@ export interface PackageState {
     agencyCountry: string
   }
   countries: string[]
-  packages: object[]
+  packageList: object[]
   packageCnt: number
   currentPage: number
   itemsPerPage: number
   totalPages: number
-}
-
-export const initialState: PackageState = {
-  packageCode: '',
-  isModalOpen: false,
-  isEditing: false,
-  isCreating: false,
-  crudState: CRUDStateEnum.CREATE,
-  packageDetail: {
-    flightCountry: '',
-    hotelCountry: '',
-    agencyCountry: '',
-  },
-  countries: [],
-  packages: [],
-  packageCnt: 0,
-  currentPage: 1,
-  itemsPerPage: 10,
-  totalPages: 0,
 }
 
 export interface PartnerDisable {
@@ -85,7 +68,4 @@ export interface AssignState {
   rejected: number
 }
 
-export type PackageAction =
-  | { type: 'SET_PACKAGES'; payload: object[] }
-  | { type: 'SET_EDITING'; payload: boolean }
-  | { type: 'SET_MODAL_OPEN'; payload: boolean }
+
