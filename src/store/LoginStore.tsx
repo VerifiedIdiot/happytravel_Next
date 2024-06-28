@@ -14,7 +14,8 @@ export const useEmployeeStore = create<LoginInfoState>((set) => ({
     deptCode: '',
     posCode: '',
   },
-  setLoginState: (loginState: Partial<LoginInfo['loginState']>) => set((state) => ({
-    loginState: { ...state.loginState, ...loginState },
-  })),
+  setLoginState: (loginState: Partial<LoginInfo['loginState']>) =>
+    set((state) => ({
+      loginState: { ...state.loginState, ...loginState },
+    })),
 }));
