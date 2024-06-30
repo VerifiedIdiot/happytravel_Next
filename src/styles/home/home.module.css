@@ -1,0 +1,36 @@
+
+
+.altText {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+
+.imageSection {
+  @apply relative flex w-full;
+  height: 70dvh;
+
+}
+
+.imageItem {
+  @apply w-full object-cover mt-16;
+  
+}
+
+.itemSection {
+  @apply flex justify-center items-center w-full;
+  height: 30dvh;
+}
+
+.itemContainer {
+  @apply bg-gray-200 shadow-2xl;
+  width: 98%;
+  height: 95%;
+  
+  border-radius: 8px;
+}
