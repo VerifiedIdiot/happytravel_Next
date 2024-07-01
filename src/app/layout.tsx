@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 import { ReactNode } from 'react'
 import HeaderFooter from './HeaderFooter'
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
@@ -14,7 +17,7 @@ export const metadata: Metadata = {
 }
 
 const DefaultLayout = ({ children }: { children: ReactNode }) => {
-  return <main className='w-full min-h-dvh h-max flex flex-col justify-center items-center bg-gray-50'>{children}</main>
+  return <main className='w-full min-h-dvh flex flex-col justify-center items-center bg-white'>{children}</main>
 }
 
 const RootLayout = ({ children }: { children: ReactNode }) => {

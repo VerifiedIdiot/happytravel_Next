@@ -1,5 +1,6 @@
-
 import styles from '@/styles/home/home.module.css'
+import { ReactNode } from 'react'
+import { SliderSection, ItemSection } from './Comps'
 import { Suspense } from 'react'
 
 export const metadata = {
@@ -7,24 +8,11 @@ export const metadata = {
   description: 'HOME OF HAPPY TRAVEL',
 }
 
-export default function Home() {
+export default function Home({ children }: { children: ReactNode }) {
   return (
-        <>
-      <section className={styles.imageSection}>
-      <img
-          className={styles.imageItem}
-          src="/asset/image/company1.png"
-          alt="Company Image"
-        />
-      </section>
-      <section className={styles.itemSection}>
-        <div className={styles.itemContainer}>
-          {
-            
-          }
-
-        </div>
-      </section>
+    <>
+      <SliderSection>{children}</SliderSection>
+      <ItemSection>{children}</ItemSection>
     </>
   )
 }

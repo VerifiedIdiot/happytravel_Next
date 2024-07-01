@@ -12,25 +12,76 @@
 
 
 .imageSection {
-  @apply relative flex w-full;
-  height: 70dvh;
+  @apply relative flex w-full z-10;
+  height: 95dvh;
 
 }
 
 .imageItem {
-  @apply w-full object-cover mt-16;
+  @apply w-full object-cover;
   
 }
 
+.introSection {
+  @apply absolute top-40 left-52 flex w-3/5 h-2/3;
+  @apply flex flex-col
+}
+
+.introTextContainer {
+  @apply flex flex-col w-full h-1/3;
+ 
+}
+
+.searchContainer {
+  @apply flex flex-col w-full h-2/3 ;
+}
+
+.button {
+  @apply flex justify-center items-center h-12 bg-white transition-all duration-300 rounded;
+}
+
+.button:hover {
+  @apply bg-customRed text-white;
+}
+
+
+.buttonFlight {
+  @apply w-32;
+}
+
+.buttonHotel {
+  @apply w-28 ml-3;
+}
+
+.buttonGuide {
+  @apply w-32 ml-3;
+}
+
+
+
+
+
+
 .itemSection {
-  @apply flex justify-center items-center w-full;
+  @apply flex relative justify-center items-center w-full;
   height: 30dvh;
 }
 
 .itemContainer {
-  @apply bg-gray-200 shadow-2xl;
-  width: 98%;
+  @apply flex absolute bottom-1/4 justify-between items-center bg-transparent;
+  width: 80%;
   height: 95%;
   
   border-radius: 8px;
+}
+
+.infoItem {
+  @apply bg-white z-50 shadow-sm;
+  width: 17vw;
+  height: 100%;
+  
+}
+
+.departmentInfo {
+  @apply flex flex-col justify-center items-center w-full h-full hover:bg-customRed transition-all duration-300
 }
