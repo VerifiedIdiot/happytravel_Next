@@ -1,29 +1,39 @@
+'use client'
+
 import { PropsWithChildren, ReactNode } from 'react'
 import Link from 'next/link'
 import styles from '@/styles/home/home.module.css'
 import { StyledSearch } from '@/components/Search'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlane, faBed, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons'
+import {
+  faPlane,
+  faBed,
+  faSuitcaseRolling,
+  faHandHoldingDollar,
+  faHeart,
+  faRankingStar,
+  faHeadset,
+} from '@fortawesome/free-solid-svg-icons'
 
 const StyledLinkItems = () => {
   return (
     <div className='flex w-full h-1/4 items-center'>
       <Link href={'/flight'}>
         <button className={`${styles.button} ${styles.buttonFlight}`}>
-          <FontAwesomeIcon icon={faPlane} className="buttonIcon mr-2" />
-          <span className="buttonText">항공권</span>
+          <FontAwesomeIcon icon={faPlane} className='buttonIcon mr-2' />
+          <span className='buttonText'>항공권</span>
         </button>
       </Link>
       <Link href={'/hotel'}>
         <button className={`${styles.button} ${styles.buttonHotel}`}>
-          <FontAwesomeIcon icon={faBed} className="buttonIcon mr-2" />
-          <span className="buttonText">숙소</span>
+          <FontAwesomeIcon icon={faBed} className='buttonIcon mr-2' />
+          <span className='buttonText'>숙소</span>
         </button>
       </Link>
       <Link href={'/agency'}>
         <button className={`${styles.button} ${styles.buttonGuide}`}>
-          <FontAwesomeIcon icon={faSuitcaseRolling} className="buttonIcon mr-2" />
-          <span className="buttonText">가이드</span>
+          <FontAwesomeIcon icon={faSuitcaseRolling} className='buttonIcon mr-2' />
+          <span className='buttonText'>가이드</span>
         </button>
       </Link>
     </div>
@@ -64,11 +74,30 @@ export const SliderSection = ({ children }: { children: ReactNode }, props: Prop
 
 export const ItemSection = ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
   const departments = [
-    { name: '부서1', link: '/department1', description: '부서1 설명', icon: '📁' },
-    { name: '부서2', link: '/department2', description: '부서2 설명', icon: '📂' },
-    { name: '부서3', link: '/department3', description: '부서3 설명', icon: '📊' },
-    { name: '부서4', link: '/department4', description: '부서4 설명', icon: '📈' },
-    
+    {
+      name: '최저 가격 보장',
+      link: '/department1',
+      description: '항상 최적의 가격의 상품을 보장합니다',
+      icon: <FontAwesomeIcon icon={faHandHoldingDollar} />,
+    },
+    {
+      name: '사랑해용 뿡뿡',
+      link: '/department2',
+      description: '부서2 설명',
+      icon: <FontAwesomeIcon icon={faHeart} />,
+    },
+    {
+      name: '업계 1위',
+      link: '/department3',
+      description: '부서3 설명',
+      icon: <FontAwesomeIcon icon={faRankingStar} />,
+    },
+    {
+      name: '연중무휴 24시간',
+      link: '/department4',
+      description: '부서4 설명',
+      icon: <FontAwesomeIcon icon={faHeadset} />,
+    },
   ]
   return (
     <>
@@ -76,15 +105,33 @@ export const ItemSection = ({ children }: { children: ReactNode }, props: PropsW
         <div className={styles.itemContainer}>
           {departments.map((item, index) => (
             <div key={index} className={styles.infoItem}>
-              <Link href={item.link}>
-                <button className={styles.departmentInfo}>
-                  {item.icon}
-                  <p>{item.name}</p>
-                  <p>{item.description}</p>
-                </button>
-              </Link>
+              {/* <Link href={item.link}> */}
+              <button className={styles.departmentInfo}>
+                <h1>{item.icon}</h1>
+                <h2>{item.name}</h2>
+                <h3>{item.description}</h3>
+              </button>
+              {/* </Link> */}
             </div>
           ))}
+        </div>
+      </section>
+    </>
+  )
+}
+
+export const FeaturedSection = ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+  return (
+    <>
+      <section className={styles.featuredSection}>
+        <div className={styles.featuredContainer}>
+          <div className={styles.textArea}>
+            <p className='text-gray-400'>Featured</p>
+            <h2 className='text-4xl'>
+              <strong className='font-bold mr-5'>Featured</strong>Destination
+            </h2>
+          </div>
+          <div className={styles.carouselContainer}></div>
         </div>
       </section>
     </>

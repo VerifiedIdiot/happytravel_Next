@@ -8,7 +8,7 @@ const Header = ({ showHeader, pathname }: { showHeader: boolean, pathname: strin
   const isHomePage = pathname === '/';
   return (
     <header className={`fixed top-0 left-0 w-full ${isHomePage ? 'bg-transparent' : 'bg-blue-600'} text-white flex justify-between items-center h-32 text-2xl transition-all duration-300 ${showHeader ? 'flex' : 'hidden'} z-20 `}>
-      <h1 className='text-2xl font-bold ml-52'>Happy Travel</h1>
+      <h1 className='text-2xl font-bold ml-96'>Happy Travel</h1>
       <nav className='flex justify-center w-3/5'>
         <ul className='flex justify-around mr-8 w-full'>
           <li>
