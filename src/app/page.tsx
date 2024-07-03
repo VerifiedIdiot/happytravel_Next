@@ -1,7 +1,6 @@
 import styles from '@/styles/home/home.module.css'
 import { ReactNode } from 'react'
 import { SliderSection, ItemSection, FeaturedSection } from './Comps'
-import { Suspense } from 'react'
 
 export const metadata = {
   title: 'HAPPY TRAVEL! WHAT A FANTASTIC JOURNEY!',

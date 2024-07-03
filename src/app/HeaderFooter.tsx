@@ -12,27 +12,27 @@ const Header = ({ showHeader, pathname }: { showHeader: boolean, pathname: strin
       <nav className='flex justify-center w-3/5'>
         <ul className='flex justify-around mr-8 w-full'>
           <li>
-            <Link href='/' className='hover:text-gray-300'>
+            <Link href='/' passHref className='hover:text-gray-300'>
               Home
             </Link>
           </li>
           <li>
-            <Link href='/About' className='hover:text-gray-300'>
+            <Link href='/about' className='hover:text-gray-300'>
               About
             </Link>
           </li>
           <li>
-            <Link href='/Tour' className='hover:text-gray-300'>
+            <Link href='/tour' className='hover:text-gray-300'>
               Tour
             </Link>
           </li>
           <li>
-            <Link href='/Hotels' className='hover:text-gray-300'>
+            <Link href='/hotels' className='hover:text-gray-300'>
               Hotels
             </Link>
           </li>
           <li>
-            <Link href='/Contact' className='hover:text-gray-300'>
+            <Link href='/contact' className='hover:text-gray-300'>
               Contact
             </Link>
           </li>
@@ -45,7 +45,7 @@ const Header = ({ showHeader, pathname }: { showHeader: boolean, pathname: strin
 const Footer = () => {
   return (
     <footer className='w-full bg-gray-800 text-white flex justify-center items-center h-20'>
-      <p>&copy; 2024 정벼리 </p>
+      <p>&copy; 2024 </p>
     </footer>
   )
 }
