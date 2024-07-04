@@ -3,7 +3,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 import { ReactNode } from 'react'
-import HeaderFooter from './HeaderFooter'
+import HeaderFooter from '../components/client/HeaderFooter'
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
 
 import '@/styles/global.css'

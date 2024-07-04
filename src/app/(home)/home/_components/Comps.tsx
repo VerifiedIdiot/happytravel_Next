@@ -1,5 +1,4 @@
 'use client'
-
 import { PropsWithChildren, ReactNode } from 'react'
 import Link from 'next/link'
 import styles from '@/styles/home/home.module.css'

@@ -12,22 +12,22 @@ const Header = ({ showHeader, pathname }: { showHeader: boolean, pathname: strin
       <nav className='flex justify-center w-3/5'>
         <ul className='flex justify-around mr-8 w-full'>
           <li>
-            <Link href='/' className='hover:text-gray-300'>
+            <Link href='/home' className='hover:text-gray-300'>
               Home
             </Link>
           </li>
           <li>
-            <Link href='/About' className='hover:text-gray-300'>
+            <Link href='/about' className='hover:text-gray-300'>
               About
             </Link>
           </li>
           <li>
-            <Link href='/Tour' className='hover:text-gray-300'>
+            <Link href='/package' className='hover:text-gray-300'>
               Tour
             </Link>
           </li>
           <li>
-            <Link href='/Hotels' className='hover:text-gray-300'>
+            <Link href='/hotel' className='hover:text-gray-300'>
               Hotels
             </Link>
           </li>
