@@ -33,6 +33,8 @@ const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  maxRedirects: 3,
+  timeout: 3000,
 });
 
 // 응답 인터셉터 설정

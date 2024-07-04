@@ -2,7 +2,7 @@
 import { PropsWithChildren, ReactNode } from 'react'
 import Link from 'next/link'
 import styles from '@/styles/home/home.module.css'
-import { StyledSearch } from '@/components/Search'
+import { StyledSearch } from '@/components/client/Search'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faPlane,
@@ -13,6 +13,9 @@ import {
   faRankingStar,
   faHeadset,
 } from '@fortawesome/free-solid-svg-icons'
+import { fetchCountryCount } from '@/api/home/ServerAPI'
+import StyledSlider from '@/components/client/slick/Carousel'
+import { CountryCount } from '@/types/Home'
 
 const StyledLinkItems = () => {
   return (
@@ -119,7 +122,10 @@ export const ItemSection = ({ children }: { children: ReactNode }, props: PropsW
   )
 }
 
-export const FeaturedSection = ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+export const FeaturedSection = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+  const data: CountryCount[] = await fetchCountryCount()
+
+
   return (
     <>
       <section className={styles.featuredSection}>
@@ -131,6 +137,7 @@ export const FeaturedSection = ({ children }: { children: ReactNode }, props: Pr
             </h2>
           </div>
           <div className={styles.carouselContainer}></div>
+          <StyledSlider data={data}/>
         </div>
       </section>
     </>
