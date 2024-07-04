@@ -3,10 +3,16 @@ import { CountryCount } from '@/types/Home'
 import { AxiosResponse } from 'axios'
 import apiClient from '@/lib/AxiosConfig'
 
-const BASE_URL: string = process.env.BASE_URL!
-const SPRING_URL: string = process.env.SPRINGBOOT_URL!
+const BASE_URL: string = process.env.NEXT_PUBLIC_BASE_URL!
+const SPRING_URL: string = process.env.NEXT_PUBLIC_SPRINGBOOT_URL!
+
+console.log('BASE_URL:', BASE_URL);
+console.log('SPRING_URL:', SPRING_URL);
 
 export const GET = async (req: NextRequest) => {
+  if (!SPRING_URL) {
+    return NextResponse.json({ error: 'SPRINGBOOT_URL is not defined' }, { status: 500 });
+  }
   try {
     const response = await fetch(`${SPRING_URL}/package/country-count`, {
       method: 'GET',

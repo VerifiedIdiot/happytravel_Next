@@ -29,7 +29,6 @@ const keysToSnakeCase = (obj: any): any => {
 
 // 새로운 axios 인스턴스 생성
 const apiClient = axios.create({
-  baseURL: process.env.BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },

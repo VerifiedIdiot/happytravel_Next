@@ -1,11 +1,12 @@
 'use client'
 import { CountryCount } from '@/types/Home'
 import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Image from 'next/image'
 
 interface StyledSliderProps {
-  data: CountryCount[];
+  data: CountryCount[]
 }
 
 const StyledSlider: React.FC<StyledSliderProps> = ({ data }) => {
@@ -42,14 +43,20 @@ const StyledSlider: React.FC<StyledSliderProps> = ({ data }) => {
     ],
   }
   return (
-    <div className='container mx-auto py-8'>
+    <div>
       <Slider {...settings}>
         {data.map((item, index) => (
-          <div key={index} className='px-2'>
-            <div className='relative'>
-              <img src={item.countryImage} alt={item.koreanName} className='w-full h-60 object-cover rounded-lg' />
-              <div className='absolute bottom-0 left-0 right-0 bg-white bg-opacity-75 p-2 rounded-b-lg'>
-                <h3 className='text-xl font-semibold'>{item.koreanName}</h3>
+          <div className='w-1/6' key={index}>
+            <div>
+            <Image
+                src={item.countryImage}
+                alt={item.koreanName}
+                // className={styles.imageItem}
+                width={300}
+                height={240}
+              />
+              <div >
+                <h3>{item.koreanName}</h3>
                 <p>{item.packageCount}</p>
               </div>
             </div>

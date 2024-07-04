@@ -1,5 +1,6 @@
-'use client'
+
 import { PropsWithChildren, ReactNode } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from '@/styles/home/home.module.css'
 import { StyledSearch } from '@/components/client/Search'
@@ -67,7 +68,13 @@ export const SliderSection = ({ children }: { children: ReactNode }, props: Prop
   return (
     <>
       <section className={styles.imageSection}>
-        <img className={styles.imageItem} src='/asset/image/bg_1.jpg.webp' alt='Company Image' />
+      <Image
+        src='/asset/image/bg_1.jpg.webp'
+        alt='Company Image'
+        className={styles.imageItem}
+        width={1920}  
+        height={1280} 
+      />
         <Introduce />
       </section>
     </>
@@ -124,7 +131,7 @@ export const ItemSection = ({ children }: { children: ReactNode }, props: PropsW
 
 export const FeaturedSection = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
   const data: CountryCount[] = await fetchCountryCount()
-
+  console.log(data)
 
   return (
     <>
@@ -136,8 +143,11 @@ export const FeaturedSection = async ({ children }: { children: ReactNode }, pro
               <strong className='font-bold mr-5'>Featured</strong>Destination
             </h2>
           </div>
-          <div className={styles.carouselContainer}></div>
+          <div className={styles.carouselContainer}>
           <StyledSlider data={data}/>
+
+          </div>
+          
         </div>
       </section>
     </>
