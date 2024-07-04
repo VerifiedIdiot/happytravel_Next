@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import { SliderSection, ItemSection, FeaturedSection } from './(home)/home/_components/Comps'
 import { Suspense } from 'react'
 import { fetchCountryCount } from '@/api/home/ServerAPI'
+
 export const metadata = {
   title: 'HAPPY TRAVEL! WHAT A FANTASTIC JOURNEY!',
   description: 'HOME OF HAPPY TRAVEL',
