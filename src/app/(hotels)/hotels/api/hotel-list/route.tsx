@@ -14,7 +14,7 @@ export const GET = async (req: NextRequest) => {
     return NextResponse.json({ error: 'SPRINGBOOT_URL is not defined' }, { status: 500 });
   }
   try {
-    const response = await fetch(`${SPRING_URL}/hotel/hotel-list`, {
+    const response = await fetch(`${SPRING_URL}/hotels/hotel-list`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

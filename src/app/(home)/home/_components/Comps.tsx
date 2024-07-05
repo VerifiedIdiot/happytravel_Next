@@ -74,6 +74,7 @@ export const SliderSection = ({ children }: { children: ReactNode }, props: Prop
         className={styles.imageItem}
         width={1920}  
         height={1280} 
+        priority
       />
         <Introduce />
       </section>
@@ -131,7 +132,7 @@ export const ItemSection = ({ children }: { children: ReactNode }, props: PropsW
 
 export const FeaturedSection = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
   const data: CountryCount[] = await fetchCountryCount()
-  console.log(data)
+  // console.log(data)
 
   return (
     <>

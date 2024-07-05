@@ -1,0 +1,23 @@
+.sliderContainer {
+    @apply flex flex-col justify-center;
+    height:100%;
+    width:100%;
+}
+
+.imageContainer {
+    @apply flex flex-col justify-center items-center;
+    height:25vw;
+    width:90%;
+}
+
+.imageItem {
+    @apply object-fill;
+    width: 100%;
+    height: 100%;
+    max-width: 300px; /* 최대 너비를 300px로 제한 */
+    max-height: 300px; /* 최대 높이를 240px로 제한 */
+  }
+
+  .textContainer {
+    @apply w-full
+  }

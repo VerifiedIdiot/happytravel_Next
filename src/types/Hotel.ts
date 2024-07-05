@@ -16,6 +16,7 @@ export enum CRUDStateEnum {
 export interface HotelList {
   id: number
   hotelName: string
+  isUsed: string
   price: number
   imageUrl: string
 }

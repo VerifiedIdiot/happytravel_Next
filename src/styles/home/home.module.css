@@ -115,7 +115,7 @@
 
 .featuredSection {
   @apply flex items-center w-full bg-white;
-  height: 95dvh;
+  height: 90dvh;
 }
 
 .featuredContainer {
