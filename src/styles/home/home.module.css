@@ -136,6 +136,29 @@
 }
 
 .sliderItem {
-  
   width: 13.7vw;
+}
+
+.topPackageSection {
+  @apply flex relative items-center w-full;
+  background: #f8faff;
+  height: 90dvh;
+}
+
+
+.topPackageContainer {
+  @apply flex flex-col justify-around h-5/6;
+  width: 100%;
+  
+}
+
+.packageTextArea {
+  @apply flex justify-around flex-col w-4/5;
+  width: 100%;
+  margin-left:20vw;
+}
+
+.packageContainer {
+  @apply flex flex-col justify-center;
+  height: 90%;
 }

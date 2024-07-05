@@ -3,8 +3,8 @@
 {
     position: relative;
 
-    display: block;
-    box-sizing: border-box;
+
+    /* box-sizing: border-box; */
 
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -22,9 +22,9 @@
 {
     position: relative;
 
-    display: block;
+    /* display: block; */
     overflow: hidden;
-
+    cursor: pointer;
     margin: 0;
     padding: 0;
 }
@@ -54,14 +54,15 @@
     top: 0;
     left: 0;
 
-    display: block;
+    
     margin-left: auto;
     margin-right: auto;
 }
 .slick-track:before,
 .slick-track:after
 {
-    display: table;
+    
+
 
     content: '';
 }
@@ -115,5 +116,5 @@
     border: 1px solid transparent;
 }
 .slick-arrow.slick-hidden {
-    display: none;
+    width: 30px;
 }

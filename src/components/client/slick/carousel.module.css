@@ -1,23 +1,77 @@
 .sliderContainer {
-    @apply flex flex-col justify-center;
-    height:100%;
-    width:100%;
+  @apply flex flex-col justify-center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.sliderContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardItem {
+  width: auto !important;
+  height: auto !important;
 }
 
 .imageContainer {
-    @apply flex flex-col justify-center items-center;
-    height:25vw;
-    width:90%;
+  @apply flex flex-col justify-center items-center relative;
+  height: 23vw;
+  width: 90%;
 }
 
 .imageItem {
-    @apply object-fill;
-    width: 100%;
-    height: 100%;
-    max-width: 300px; /* 최대 너비를 300px로 제한 */
-    max-height: 300px; /* 최대 높이를 240px로 제한 */
-  }
+  @apply object-fill;
+  box-shadow: 0 0 0.4px 0.3px #000808;
+  width: 100%;
+  height: 23vw;
+  max-width: 350px;
+  max-height: 300px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  position: relative;
+}
 
-  .textContainer {
-    @apply w-full
-  }
+.imageItem:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.iconContainer {
+  @apply absolute inset-0 flex flex-col justify-center items-center;
+  height:19vw;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imageContainer:hover .iconContainer {
+  opacity: 1;
+}
+
+.icon {
+  font-size: 3vw;
+  color: white;
+}
+
+.textContainer {
+  @apply w-full flex flex-col justify-around h-1/5 shadow-md;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.textContainer:hover {
+  cursor: pointer;
+}
+
+.textContainer h3 {
+  font-size: 1.2vw;
+}
+
+.textContainer p {
+  font-size: 0.8vw;
+  margin-left: 2px;
+}

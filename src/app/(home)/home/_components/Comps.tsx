@@ -1,4 +1,3 @@
-
 import { PropsWithChildren, ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,9 +13,11 @@ import {
   faRankingStar,
   faHeadset,
 } from '@fortawesome/free-solid-svg-icons'
-import { fetchCountryCount } from '@/api/home/ServerAPI'
+import { fetchCountryCount, fetchTopPackages } from '@/api/home/ServerAPI'
 import StyledSlider from '@/components/client/slick/Carousel'
-import { CountryCount } from '@/types/Home'
+import { CountryCount, TopPackage} from '@/types/Home'
+
+import dynamic from 'next/dynamic'
 
 const StyledLinkItems = () => {
   return (
@@ -68,14 +69,16 @@ export const SliderSection = ({ children }: { children: ReactNode }, props: Prop
   return (
     <>
       <section className={styles.imageSection}>
-      <Image
-        src='/asset/image/bg_1.jpg.webp'
-        alt='Company Image'
-        className={styles.imageItem}
-        width={1920}  
-        height={1280} 
-        priority
-      />
+        <Image
+          src='/asset/image/bg_1.jpg.webp'
+          alt='Company Image'
+          className={styles.imageItem}
+          width={1920}
+          height={1280}
+          priority
+          placeholder='blur'
+          blurDataURL='/asset/image/bg_1.jpg.webp'
+        />
         <Introduce />
       </section>
     </>
@@ -132,7 +135,16 @@ export const ItemSection = ({ children }: { children: ReactNode }, props: PropsW
 
 export const FeaturedSection = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
   const data: CountryCount[] = await fetchCountryCount()
-  // console.log(data)
+  // const [isClient, setIsClient] = useState(false);
+
+  // // 다이나믹 임포트를 설정
+  // const DynamicStyledSlider = dynamic(() => import('@/components/client/slick/Carousel'), {
+  //   ssr: false, // 서버 사이드 렌더링 비활성화
+  // })
+
+  // const ServerRenderedSlider = dynamic(() => import('@/components/client/slick/Carousel'), {
+  //   ssr: true, // 서버 사이드 렌더링 활성화
+  // })
 
   return (
     <>
@@ -140,15 +152,33 @@ export const FeaturedSection = async ({ children }: { children: ReactNode }, pro
         <div className={styles.featuredContainer}>
           <div className={styles.textArea}>
             <p className='text-gray-400'>Featured</p>
-            <h2 className='text-4xl'>
+            <h2 className='text-4xl' style={{ marginTop: '1.5vw' }}>
               <strong className='font-bold mr-5'>Featured</strong>Destination
             </h2>
           </div>
           <div className={styles.carouselContainer}>
-          <StyledSlider data={data}/>
-
+            <StyledSlider data={data} />
           </div>
-          
+        </div>
+      </section>
+    </>
+  )
+}
+
+export const TopPackages = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+  const data : TopPackage[]  = await fetchTopPackages()
+  console.log(data)
+  return (
+    <>
+      <section className={styles.topPackageSection}>
+        <div className={styles.topPackageContainer}>
+          <div className={styles.packageTextArea}>
+            <p className='text-gray-400'>Special Offers</p>
+            <h2 className='text-4xl' style={{ marginTop: '1.5vw' }}>
+              <strong className='font-bold mr-5'>Top</strong>Tour Packages
+            </h2>
+          </div>
+          <div className={styles.packageContainer}></div>
         </div>
       </section>
     </>
