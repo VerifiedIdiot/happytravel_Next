@@ -12,7 +12,7 @@ const Header = ({ showHeader, pathname }: { showHeader: boolean, pathname: strin
       <nav className='flex justify-center w-3/5'>
         <ul className='flex justify-around mr-8 w-full'>
           <li>
-            <Link href='/' className='hover:text-gray-300'>
+            <Link href='/'>
               Home
             </Link>
           </li>

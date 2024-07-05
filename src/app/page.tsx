@@ -1,14 +1,13 @@
 import styles from '@/styles/home/home.module.css'
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react'
-import { SliderSection ,ItemSection } from './(home)/home/_components/Comps'
+import { SliderSection ,ItemSection,FeaturedSection } from './(home)/home/_components/Comps'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 
 
 
-const FeaturedSection = dynamic(() => import('@/app/(home)/home/_components/Comps').then((mod) => mod.FeaturedSection), {
-  ssr: false,
-})
+
 
 export const metadata = {
   title: 'HAPPY TRAVEL! WHAT A FANTASTIC JOURNEY!',
@@ -16,6 +15,7 @@ export const metadata = {
 }
 
 export default function Home({ children }: { children: ReactNode }) {
+  
   return (
     <>
      
