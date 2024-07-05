@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react'
 import { IntroSection, ItemSection, FAQsSection } from './comps'
 
-export const About = ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+export const about = ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
   return (
     <>
       <IntroSection>{children}</IntroSection>
@@ -11,4 +11,4 @@ export const About = ({ children }: { children: ReactNode }, props: PropsWithChi
   )
 }
 
-export default About
+export default about
