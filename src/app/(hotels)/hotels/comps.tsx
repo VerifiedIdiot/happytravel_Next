@@ -25,7 +25,7 @@ interface ItemSectionProps {
 
 export const ItemSection = async ({ children }: ItemSectionProps) => {
   const data: HotelList[] = await fetchHotelList()
-  console.log(data)
+  
 
   return (
     <div className='w-3/4 m-16'>

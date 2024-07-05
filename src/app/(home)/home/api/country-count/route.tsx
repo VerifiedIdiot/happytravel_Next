@@ -6,8 +6,8 @@ import apiClient from '@/lib/AxiosConfig'
 const BASE_URL: string = process.env.NEXT_PUBLIC_BASE_URL!
 const SPRING_URL: string = process.env.NEXT_PUBLIC_SPRINGBOOT_URL!
 
-console.log('BASE_URL:', BASE_URL);
-console.log('SPRING_URL:', SPRING_URL);
+// console.log('BASE_URL:', BASE_URL);
+// console.log('SPRING_URL:', SPRING_URL);
 
 export const GET = async (req: NextRequest) => {
   if (!SPRING_URL) {
