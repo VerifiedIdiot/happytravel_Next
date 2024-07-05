@@ -22,12 +22,12 @@ const Header = ({ showHeader, pathname }: { showHeader: boolean, pathname: strin
             </Link>
           </li>
           <li>
-            <Link href='/Tour' className='hover:text-gray-300'>
+            <Link href='/tour' className='hover:text-gray-300'>
               Tour
             </Link>
           </li>
           <li>
-            <Link href='/Hotels' className='hover:text-gray-300'>
+            <Link href='/hotels' className='hover:text-gray-300'>
               Hotels
             </Link>
           </li>
