@@ -20,11 +20,10 @@ export const IntroSection = ({ children }: { children: ReactNode }) => {
 }
 
 interface ItemSectionProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
-export const ItemSection = async ({ children }: ItemSectionProps ) => {
-
+export const ItemSection = async ({ children }: ItemSectionProps) => {
   const data: HotelList[] = await fetchHotelList()
   console.log(data)
 
@@ -56,5 +55,5 @@ export const ItemSection = async ({ children }: ItemSectionProps ) => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
