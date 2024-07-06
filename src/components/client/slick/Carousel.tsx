@@ -66,10 +66,10 @@ const StyledSlider: React.FC<StyledSliderProps> = ({ data }) => {
   }
 
   return (
-    <div ref={ref} className={`${styles.sliderContainer} ${inView ? styles.visible : ''}`}>
+    <div ref={ref} className={`${styles.sliderContainer} ${inView ? styles.visible : null}`}>
       <Slider {...settings}>
         {uniqueData.map((item, index) => (
-          <div key={index}>
+          <div key={index} >
             <div className={styles.imageContainer}>
               <Image
                 src={item.countryImage}

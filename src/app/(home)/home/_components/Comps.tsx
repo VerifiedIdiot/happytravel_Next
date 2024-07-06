@@ -15,7 +15,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { fetchCountryCount, fetchTopPackages } from '@/api/home/ServerAPI'
 import StyledSlider from '@/components/client/slick/Carousel'
-import { CountryCount, TopPackage} from '@/types/Home'
+import StyledTop5List from '@/components/client/Top5Item/Top5Items'
+import { CountryCount, TopPackage } from '@/types/Home'
 
 import dynamic from 'next/dynamic'
 
@@ -118,13 +119,11 @@ export const ItemSection = ({ children }: { children: ReactNode }, props: PropsW
         <div className={styles.itemContainer}>
           {departments.map((item, index) => (
             <div key={index} className={styles.infoItem}>
-              {/* <Link href={item.link}> */}
               <button className={styles.departmentInfo}>
                 <h1>{item.icon}</h1>
                 <h2>{item.name}</h2>
                 <h3>{item.description}</h3>
               </button>
-              {/* </Link> */}
             </div>
           ))}
         </div>
@@ -166,8 +165,8 @@ export const FeaturedSection = async ({ children }: { children: ReactNode }, pro
 }
 
 export const TopPackages = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
-  const data : TopPackage[]  = await fetchTopPackages()
-  console.log(data)
+  const data: TopPackage[] = await fetchTopPackages()
+  
   return (
     <>
       <section className={styles.topPackageSection}>
@@ -178,9 +177,13 @@ export const TopPackages = async ({ children }: { children: ReactNode }, props: 
               <strong className='font-bold mr-5'>Top</strong>Tour Packages
             </h2>
           </div>
-          <div className={styles.packageContainer}></div>
+          <div className={styles.packageContainer}>
+            <StyledTop5List data={data}/>
+          </div>
         </div>
       </section>
     </>
   )
 }
+
+

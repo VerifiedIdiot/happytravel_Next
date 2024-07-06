@@ -14,14 +14,17 @@
 }
 
 .cardItem {
-  width: auto !important;
-  height: auto !important;
+  display:flex !important;
+  justify-content:center !important;
+
+  align-items: center !important;
 }
 
 .imageContainer {
   @apply flex flex-col justify-center items-center relative;
   height: 23vw;
   width: 90%;
+  
 }
 
 .imageItem {

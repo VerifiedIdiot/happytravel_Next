@@ -8,6 +8,8 @@ export interface CountryCount {
 export interface TopPackage {
     packageCode: string
     packageName: string
+    countryName: string
+    region: string
     countryImage: string
     packageInfo: string
     days: number
