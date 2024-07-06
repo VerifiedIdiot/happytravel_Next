@@ -13,21 +13,26 @@ export enum CRUDStateEnum {
   DELETE = 'delete',
 }
 
-export interface HotelList {
+export interface Hotel {
   id: number
   hotelName: string
+  imageUrl: string
   star: number
   price: number
   detail: string
-  isUsed: string
-  imageUrl: string
 }
 
-export interface HotelListResponse {
-  hotels: HotelList[]
+export interface HotelCntList {
+  hotelList: Hotel[]
   hotelCnt: number
   currentPage: number
   itemsPerPage: number
-  totalPages: number
+  totalPage: number
 }
 
+export type HotelAction =
+  | { type: 'SET_HOTEL_LIST'; payload: Hotel[] }
+  | { type: 'SET_HOTEL_CNT'; payload: number }
+  | { type: 'SET_CURRENT_PAGE'; payload: number }
+  | { type: 'SET_ITEM_PER_PAGE'; payload: number }
+  | { type: 'SET_TOTAL_PAGE'; payload: number }

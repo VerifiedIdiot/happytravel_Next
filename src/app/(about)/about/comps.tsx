@@ -29,7 +29,7 @@ const departments = [
     name: 'Flight',
     link: '/flight',
     title: '항공사 정보입니다.',
-    description: '',
+    description: '항공사 입니다ㅋ',
     image: '/asset/image/flight_attendant.jpg',
     icon: <FontAwesomeIcon icon={faPlane} className='buttonIcon' />,
   },

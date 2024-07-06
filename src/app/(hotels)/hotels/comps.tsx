@@ -1,7 +1,10 @@
-import { ReactNode } from 'react'
+'use client'
+import React, { useReducer, useEffect, ReactNode } from 'react'
 import styles from '@/styles/sales/hotels.module.css'
-import { HotelList } from '@/types/Hotel'
 import { fetchHotelList } from '@/api/hotel/ServerAPI'
+import Pagination from '@/components/Pagination'
+import { hotelReducer, hotelListState } from '@/reducers/hotel/HotelListReducer'
+import { Hotel, HotelCntList, HotelAction } from '@/types/Hotel'
 
 export const IntroSection = ({ children }: { children: ReactNode }) => {
   return (
@@ -23,12 +26,31 @@ interface ItemSectionProps {
   children: ReactNode
 }
 
-export const ItemSection = async ({ children }: ItemSectionProps) => {
-  const data: HotelList[] = await fetchHotelList()
+export const ItemSection = ({ children }: ItemSectionProps) => {
+  const [state, dispatch] = useReducer<React.Reducer<HotelCntList, HotelAction>>(hotelReducer, hotelListState)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data: Hotel[] = await fetchHotelList()
+      dispatch({ type: 'SET_HOTEL_LIST', payload: data })
+      dispatch({ type: 'SET_HOTEL_CNT', payload: data.length })
+      dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) })
+    }
+
+    fetchData()
+  }, [state.itemsPerPage])
+
+  const handlePageChange = (page: number) => {
+    dispatch({ type: 'SET_CURRENT_PAGE', payload: page })
+  }
 
   const renderStars = (rating: number) => {
     return '★'.repeat(rating) + '☆'.repeat(5 - rating)
   }
+
+  const startIndex = (state.currentPage - 1) * state.itemsPerPage
+  const endIndex = startIndex + state.itemsPerPage
+  const currentItems = state.hotelList.slice(startIndex, endIndex)
 
   return (
     <div className='w-3/4 m-16'>
@@ -37,8 +59,8 @@ export const ItemSection = async ({ children }: ItemSectionProps) => {
         <div className={styles.itemRightContainer}>
           <div className={styles.itemArea}>
             <div className={styles.itemBoxList}>
-              {data.length > 0 ? (
-                data.map((item) => (
+              {currentItems.length > 0 ? (
+                currentItems.map((item: Hotel) => (
                   <div className={styles.itemCard} key={item.id}>
                     <div className={styles.imageContainer}>
                       <img src={item.imageUrl} alt={item.hotelName} />
@@ -48,7 +70,7 @@ export const ItemSection = async ({ children }: ItemSectionProps) => {
                         <div className={styles.starRating}>
                           <h1>{item.hotelName}</h1>
                           <span>{renderStars(item.star)}</span>
-                          <span className={`${styles.ratingText}`}>Rating</span>
+                          <span className={styles.ratingText}>Rating</span>
                         </div>
                         <div>
                           <p>{item.price}원</p>
@@ -64,6 +86,7 @@ export const ItemSection = async ({ children }: ItemSectionProps) => {
                 <p>No items available</p>
               )}
             </div>
+            <Pagination currentPage={state.currentPage} totalPage={state.totalPage} onPageChange={handlePageChange} />
           </div>
         </div>
       </section>

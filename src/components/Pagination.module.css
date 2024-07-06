@@ -1,0 +1,21 @@
+.pagination {
+  @apply flex w-full justify-center items-center my-8;
+}
+
+.pagination button {
+  @apply text-lg m-1 h-12 w-12 cursor-pointer bg-white border border-red-200 rounded-full text-red-500;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+}
+
+.pageButton {
+  @apply cursor-pointer bg-white border border-red-200 rounded-full text-red-500 transition-colors;
+}
+
+.activePageButton {
+  @apply font-bold;
+  background-color: #fdd3d3 !important;
+  color: red !important;
+}
