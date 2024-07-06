@@ -23,22 +23,13 @@ export const IntroSection = ({ children }: { children: ReactNode }) => {
   )
 }
 
-type InfoType = {
-  title: string
-  description?: string
-  image: string
-}
-
-type ImageType = {
-  image: string
-}
 
 const departments = [
   {
     name: 'Flight',
     link: '/flight',
     title: '항공사 정보입니다.',
-    description: '항공사 입니다ㅋ',
+    description: '',
     image: '/asset/image/flight_attendant.jpg',
     icon: <FontAwesomeIcon icon={faPlane} className='buttonIcon' />,
   },
@@ -61,7 +52,7 @@ const departments = [
 ]
 
 export const ItemSection = () => {
-  const [selectedInfo, setSelectedInfo] = useState<InfoType>({
+  const [selectedInfo, setSelectedInfo] = useState({
     title: departments[0].title,
     description: departments[0].description,
     image: departments[0].image,
@@ -108,7 +99,7 @@ export const ItemSection = () => {
   )
 }
 
-const ItemImageSection = ({ image }: ImageType) => {
+const ItemImageSection = ({ image }: {image:string}) => {
   return (
     <div className={styles.itemImageArea}>
       <img src={image} alt='Selected' />
@@ -116,7 +107,7 @@ const ItemImageSection = ({ image }: ImageType) => {
   )
 }
 
-const ItemInfoSection = ({ title, description }: InfoType) => {
+const ItemInfoSection = ({ title, description }: {title:string, description: string}) => {
   return (
     <div className={styles.itemTextArea}>
       <h1>{title}</h1>

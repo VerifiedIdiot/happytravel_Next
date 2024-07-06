@@ -25,6 +25,11 @@ interface ItemSectionProps {
 
 export const ItemSection = async ({ children }: ItemSectionProps) => {
   const data: HotelList[] = await fetchHotelList()
+
+  const renderStars = (rating: number) => {
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating)
+  }
+
   return (
     <div className='w-3/4 m-16'>
       <section className={styles.itemSection}>
@@ -38,11 +43,21 @@ export const ItemSection = async ({ children }: ItemSectionProps) => {
                     <div className={styles.imageContainer}>
                       <img src={item.imageUrl} alt={item.hotelName} />
                     </div>
-                    <div className={styles.textContainer}>
-                      <h1>{item.hotelName}</h1>
-                      <p>{item.price}</p>
+                    <div className={styles.cardSection}>
+                      <div className={styles.textContainer}>
+                        <div className={styles.starRating}>
+                          <h1>{item.hotelName}</h1>
+                          <span>{renderStars(item.star)}</span>
+                          <span className={`${styles.ratingText}`}>Rating</span>
+                        </div>
+                        <div>
+                          <p>{item.price}원</p>
+                        </div>
+                      </div>
+                      <div className={styles.detailContainer}>
+                        <p>{item.detail}</p>
+                      </div>
                     </div>
-                    <div className={styles.detailContainer}>Detail</div>
                   </div>
                 ))
               ) : (

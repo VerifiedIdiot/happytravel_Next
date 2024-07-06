@@ -74,7 +74,7 @@
 }
 
 .faqsection {
-  @apply flex flex-row justify-center items-center w-full bg-white;
+  @apply flex flex-row justify-center items-center w-full bg-gray-100 p-24;
 }
 
 .faqContainer {
@@ -97,11 +97,10 @@
 
 .cardList {
   @apply w-full md:w-1/2 px-2;
-  /* border: 1px solid gray; */
 }
 
 .cardBox {
-  @apply bg-white p-4 mb-4;
+  @apply bg-white mb-4 relative;
   
 }
 .cardBox h3 {

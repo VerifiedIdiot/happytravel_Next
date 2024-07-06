@@ -175,23 +175,46 @@
 }
 
 .itemCard {
-  @apply flex flex-col mx-4 mb-6 border-b border-gray-200 bg-blue-100;
-  width: calc(33.3333% - 2rem); /* Adjust width to fit 3 items per row */
-  box-sizing: border-box;
-
+  @apply flex flex-col mx-4 mb-6;
+  width: calc(33.3333% - 2rem);
+  /* box-sizing: border-box; */
 }
 
 .imageContainer {
   @apply w-full flex items-center justify-center h-64;
-  border: 1px solid #333;
+  /* border: 1px solid #333; */
+}
+
+.imageContainer img {
+  @apply w-full h-full object-cover;
+}
+
+.cardSection {
+  border: 1px solid #ccc;
 }
 
 .textContainer {
-  @apply w-full flex flex-row justify-between h-16 items-center;
-  border: 1px solid #333;
+  @apply w-full flex flex-row justify-between h-36 items-center bg-white mt-4 px-2;
+}
+
+.textContainer h1 {
+  @apply text-lg;
+}
+
+.textContainer p {
+  @apply text-blue-600 font-bold;
+}
+
+.starRating span {
+  @apply flex items-center mt-2 text-customRed;
+}
+
+.starRating span.ratingText {
+  @apply text-sm text-customGray;
+  
 }
 
 .detailContainer {
-  @apply w-full flex h-16 items-center;
-  border: 1px solid #333;
+  @apply w-full flex h-48 px-2 items-start;
+  line-height: 1.8rem;
 }
