@@ -166,7 +166,7 @@ export const FeaturedSection = async ({ children }: { children: ReactNode }, pro
 
 export const TopPackages = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
   const data: TopPackage[] = await fetchTopPackages()
-  
+
   return (
     <>
       <section className={styles.topPackageSection}>
@@ -178,7 +178,7 @@ export const TopPackages = async ({ children }: { children: ReactNode }, props: 
             </h2>
           </div>
           <div className={styles.packageContainer}>
-            <StyledTop5List data={data}/>
+            <StyledTop5List data={data} />
           </div>
         </div>
       </section>
@@ -186,4 +186,15 @@ export const TopPackages = async ({ children }: { children: ReactNode }, props: 
   )
 }
 
-
+export const Subscribe = async () => {
+  return (
+    <>
+      <section className={styles.subscribeSection}>
+        <div className={styles.subscribeContainer}>
+          <div className={styles.subscribeTextContainer}></div>
+          <div className={styles.inputContainer}></div>
+        </div>
+      </section>
+    </>
+  )
+}

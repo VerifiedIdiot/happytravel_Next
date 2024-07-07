@@ -5,7 +5,7 @@
     position: relative;
     display:flex !important;
     justify-content:center !important;
-
+    height: 50vh;
     align-items: center !important;
 
     /* box-sizing: border-box; */
@@ -25,7 +25,7 @@
 .slick-list
 {
     position: relative;
-
+    height: 100%;
     display: block;
     overflow: hidden;
     cursor: pointer;

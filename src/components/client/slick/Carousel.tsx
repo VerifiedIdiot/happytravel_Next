@@ -15,7 +15,7 @@ interface StyledSliderProps {
 }
 
 const StyledSlider: React.FC<StyledSliderProps> = ({ data }) => {
-  const { ref, inView } = useInView({
+  const { ref, inView, entry } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
@@ -25,13 +25,13 @@ const StyledSlider: React.FC<StyledSliderProps> = ({ data }) => {
       index === self.findIndex((t) => t.countryImage === item.countryImage && t.koreanName === item.koreanName),
   )
 
+  
+
   const settings = {
     dots: true,
-    // infinite: true,
     speed: 1000,
     slidesToShow: 4,
     slidesToScroll: 1,
-    // autoplay: true,
     autoplaySpeed: 6000,
     responsive: [
       {
@@ -61,15 +61,14 @@ const StyledSlider: React.FC<StyledSliderProps> = ({ data }) => {
   }
 
   const handleSearch = (id: string) => {
-    // Function logic will go here
     console.log(`Country code: ${id}`)
   }
 
   return (
-    <div ref={ref} className={`${styles.sliderContainer} ${inView ? styles.visible : null}`}>
+    <div ref={ref} className={`${styles.sliderContainer} ${inView ? styles.visible : ''}`}>
       <Slider {...settings}>
         {uniqueData.map((item, index) => (
-          <div key={index} >
+          <div className={styles.cardItem} key={index}>
             <div className={styles.imageContainer}>
               <Image
                 src={item.countryImage}
@@ -80,15 +79,15 @@ const StyledSlider: React.FC<StyledSliderProps> = ({ data }) => {
                 priority
                 placeholder='blur'
                 blurDataURL={item.countryImage}
-                onClick={() => handleSearch(item.countryCode)}></Image>
+                onClick={() => handleSearch(item.countryCode)}
+              />
               <div className={styles.iconContainer}>
                 <FontAwesomeIcon icon={faSearch} className={styles.icon} />
               </div>
-
-              <div className={styles.textContainer} onClick={() => handleSearch(item.countryCode)}>
-                <h3>{item.koreanName}</h3>
-                <p>{item.packageCount}개 상품 준비중</p>
-              </div>
+            </div>
+            <div className={styles.textContainer} onClick={() => handleSearch(item.countryCode)}>
+              <h3>{item.koreanName}</h3>
+              <p>{item.packageCount}개 여행상품 </p>
             </div>
           </div>
         ))}

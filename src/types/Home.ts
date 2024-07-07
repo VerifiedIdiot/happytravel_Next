@@ -15,4 +15,5 @@ export interface TopPackage {
     days: number
     saleAmount: number
     salePrice: number
+    rating: number
 }

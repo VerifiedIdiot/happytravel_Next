@@ -14,44 +14,49 @@
 }
 
 .cardItem {
-  display:flex !important;
-  justify-content:center !important;
-
-  align-items: center !important;
+  height: 40vh;
+  width: 90%;
+  position: relative; /* 카드 아이템을 relative로 설정 */
 }
 
 .imageContainer {
   @apply flex flex-col justify-center items-center relative;
-  height: 23vw;
-  width: 90%;
-  
+  height: 90%;
+  max-width: 350px;
+  max-height: 1000px;
+  width: 90%; /* 여기서 너비를 100%로 설정 */
+  position: relative; /* 부모 요소에 relative 추가 */
 }
 
 .imageItem {
   @apply object-fill;
   box-shadow: 0 0 0.4px 0.3px #000808;
   width: 100%;
-  height: 23vw;
+  height: 100%;
   max-width: 350px;
-  max-height: 300px;
+  max-height: 500px;
   transition: opacity 0.5s ease-in-out;
   opacity: 1;
-  position: relative;
 }
 
-.imageItem:hover {
-  opacity: 0.7;
+.imageItem:hover,
+.cardItem:hover .imageItem {
+  opacity: 0.5; /* 이미지가 더 어두워지도록 opacity 값을 0.5로 수정 */
   cursor: pointer;
 }
 
 .iconContainer {
   @apply absolute inset-0 flex flex-col justify-center items-center;
-  height:19vw;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 500px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5); /* hover 시 배경색을 어둡게 설정 */
 }
 
-.imageContainer:hover .iconContainer {
+.cardItem:hover .iconContainer {
   opacity: 1;
 }
 
@@ -61,7 +66,8 @@
 }
 
 .textContainer {
-  @apply w-full flex flex-col justify-around h-1/5 shadow-md;
+  @apply w-full flex flex-col justify-around h-1/4 shadow-md;
+  width: 90%; /* 여기서 너비를 100%로 설정 */
   padding: 16px;
   cursor: pointer;
 }

@@ -153,12 +153,33 @@
 }
 
 .packageTextArea {
-  @apply flex justify-around flex-col w-4/5;
-  width: 100%;
+  @apply flex justify-around flex-col w-3/5;
+  
   margin-left:20vw;
 }
 
 .packageContainer {
   @apply flex flex-col justify-center;
   height: 90%;
+}
+
+.subscribeSection {
+  @apply relative flex justify-center items-center w-full z-10;
+  height: 60dvh;
+  background: linear-gradient(135deg, #2ebdc4 0%, #68e5b2 100%);
+}
+
+.subscribeContainer {
+  @apply flex flex-col justify-center items-center w-1/2 h-full ;
+  border: 1px solid black;
+}
+
+.subscribeTextContainer {
+  @apply flex justify-center items-center h-2/5 w-full;
+  border: 1px solid black;
+}
+
+.inputContainer {
+  @apply flex justify-center items-center h-2/5 w-full;
+  border: 1px solid black;
 }
