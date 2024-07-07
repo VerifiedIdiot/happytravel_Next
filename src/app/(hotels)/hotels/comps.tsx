@@ -3,6 +3,8 @@ import React, { useReducer, useEffect, ReactNode } from 'react'
 import styles from '@/styles/sales/hotels.module.css'
 import { fetchHotelList } from '@/api/hotel/ServerAPI'
 import Pagination from '@/components/Pagination'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMap } from '@fortawesome/free-regular-svg-icons'
 import { hotelReducer, hotelListState } from '@/reducers/hotel/HotelListReducer'
 import { Hotel, HotelCntList, HotelAction } from '@/types/Hotel'
 
@@ -53,7 +55,7 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
   const currentItems = state.hotelList.slice(startIndex, endIndex)
 
   return (
-    <div className='w-3/4 m-16'>
+    <div className='w-3/4 mt-16 mb-16'>
       <section className={styles.itemSection}>
         <div className={styles.itemLeftContainer}>{children}</div>
         <div className={styles.itemRightContainer}>
@@ -78,6 +80,22 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
                       </div>
                       <div className={styles.detailContainer}>
                         <p>{item.detail}</p>
+                      </div>
+                      <div className='flex justify-center w-full '>
+                        <hr className='w-11/12' />
+                      </div>
+                      <div className={styles.labelContainer}>
+                        <div className={styles.regionInfoItem}>
+                          <FontAwesomeIcon icon={faMap} className={styles.map} />{' '}
+                          <p className='ml-1 opacity-50'>
+                            {item.countryName}, {item.region}
+                          </p>
+                        </div>
+                        <div className={styles.btnItem}>
+                          <button className={styles.styledBtn}>
+                            <p>검색</p>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>

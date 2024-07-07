@@ -10,8 +10,7 @@
 
 .itemSection {
   @apply flex flex-wrap w-full;
-  width: 100%;
-  height: 85rem;
+  height: 100%;
 }
 
 /* 공통 사이드바 폼 (Left) */
@@ -182,11 +181,13 @@
 
 .imageContainer {
   @apply w-full flex items-center justify-center h-64;
-  /* border: 1px solid #333; */
 }
 
 .imageContainer img {
   @apply w-full h-full object-cover;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  position: relative;
 }
 
 .cardSection {
@@ -194,7 +195,7 @@
 }
 
 .textContainer {
-  @apply w-full flex flex-row justify-between h-36 items-center bg-white mt-4 px-2;
+  @apply w-full flex flex-row justify-between h-28 items-center bg-white mt-4 px-2;
 }
 
 .textContainer h1 {
@@ -217,4 +218,40 @@
 .detailContainer {
   @apply w-full flex h-48 px-2 items-start;
   line-height: 1.8rem;
+}
+
+
+.labelContainer {
+  @apply flex items-center w-full h-1/5 mb-4;
+  padding: 1rem;
+}
+
+.regionInfoItem {
+  @apply flex w-9/12 text-nowrap text-ellipsis;
+}
+
+.map {
+  font-size: .8vw;
+  color: #4d4d4d;
+  opacity: .5;
+  font-size: .8vw;
+  color: #4d4d4d;
+  opacity: .5;
+  
+}
+
+.btnItem {
+  @apply flex justify-center items-center w-1/4 h-full;
+  padding: 3px 5px;
+}
+
+.styledBtn {
+  @apply flex justify-center items-center w-full h-4/5 rounded-md;
+  background: #8bc34a;
+  cursor: pointer;
+}
+
+.styledBtn p {
+ 
+  color: white
 }

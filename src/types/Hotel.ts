@@ -20,6 +20,8 @@ export interface Hotel {
   star: number
   price: number
   detail: string
+  countryName: string
+  region: string
 }
 
 export interface HotelCntList {

@@ -19,13 +19,14 @@ export const GET = async (req: NextRequest) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'force-cache',
+      // cache: 'force-cache',
+      next: { revalidate : 10},
     })
 
     const data = await response.json()
 
     const nextResponse = NextResponse.json(data)
-    nextResponse.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=3600')
+    // nextResponse.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=3600')
 
     return nextResponse
   } catch (error) {
