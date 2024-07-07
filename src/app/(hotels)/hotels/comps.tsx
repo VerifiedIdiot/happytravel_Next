@@ -88,7 +88,7 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
                         <div className={styles.regionInfoItem}>
                           <FontAwesomeIcon icon={faMap} className={styles.map} />{' '}
                           <p className='ml-1 opacity-50'>
-                            {item.countryName}, {item.region}
+                            {item.country}
                           </p>
                         </div>
                         <div className={styles.btnItem}>

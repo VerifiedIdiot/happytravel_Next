@@ -66,7 +66,7 @@
   border: 1px solid #f85959;
   position: absolute;
   pointer-events: none;
-  z-index: 3;
+  z-index: 0;
 }
 
 .formBox .formRange input[type='range']:focus {
@@ -158,6 +158,16 @@
   @apply flex justify-start my-4 w-full;
 }
 
+.datePickerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.datePicker {
+  width: 100%;
+  z-index: 9999;
+}
+
 /* Hotels List (Right) */
 
 .itemRightContainer {
@@ -212,14 +222,12 @@
 
 .starRating span.ratingText {
   @apply text-sm text-customGray;
-  
 }
 
 .detailContainer {
   @apply w-full flex h-48 px-2 items-start;
   line-height: 1.8rem;
 }
-
 
 .labelContainer {
   @apply flex items-center w-full h-1/5 mb-4;
@@ -231,13 +239,12 @@
 }
 
 .map {
-  font-size: .8vw;
+  font-size: 0.8vw;
   color: #4d4d4d;
-  opacity: .5;
-  font-size: .8vw;
+  opacity: 0.5;
+  font-size: 0.8vw;
   color: #4d4d4d;
-  opacity: .5;
-  
+  opacity: 0.5;
 }
 
 .btnItem {
@@ -252,6 +259,5 @@
 }
 
 .styledBtn p {
- 
-  color: white
+  color: white;
 }

@@ -21,7 +21,7 @@ export interface Hotel {
   price: number
   detail: string
   countryName: string
-  region: string
+  country: string
 }
 
 export interface HotelCntList {
