@@ -1,0 +1,58 @@
+.header {
+    @apply w-full text-white flex flex-row justify-between items-center h-20 text-2xl transition-all duration-1000 z-20 absolute bg-transparent;
+    
+    
+  }
+  .headerVisible {
+    @apply opacity-100;
+  }
+  
+  .headerHidden {
+    @apply opacity-5;
+  }
+  
+  .dynamicHeader {
+    @apply w-full text-black flex justify-between items-center h-20 text-2xl transition-all duration-500 z-20 fixed bg-white shadow-2xl transform;
+  }
+  
+  .dynamicHeaderVisible {
+    @apply translate-y-0;
+  }
+  
+  .dynamicHeaderHidden {
+    @apply -translate-y-full;
+  }
+  
+  .footer {
+    @apply w-full bg-gray-800 text-white flex justify-center items-center h-20;
+  }
+  
+  .navLink {
+    @apply hover:text-gray-300;
+  }
+  
+  .navLinkActive {
+    @apply text-gray-300;
+  }
+  
+  .navLinkDynamic {
+    @apply hover:text-red-300;
+  }
+  
+  .navLinkDynamicActive {
+    @apply text-customRed;
+  }
+  
+  .title {
+    @apply text-2xl font-bold w-2/5;
+    margin-left: 20vw;
+  }
+  
+  .navContainer {
+    @apply flex justify-center w-3/5;
+  }
+  
+  .navList {
+    @apply flex justify-around mr-56 w-4/5;
+  }
+  

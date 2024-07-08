@@ -27,6 +27,14 @@
   @apply absolute top-40 flex w-3/5 h-2/3;
   @apply flex flex-col text-nowrap;
   left : 20vw;
+  /* opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; */
+}
+
+.introSection.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .introTextContainer {
@@ -68,7 +76,10 @@
   @apply flex relative justify-center items-center w-full;
   background: #f8faff;
   height: 50dvh;
+
 }
+
+
 
 .itemContainer {
   @apply flex absolute justify-between bottom-1/4   items-center bg-transparent;
@@ -76,10 +87,20 @@
   height: 95%;
   left : 20vw;
   border-radius: 8px;
+  /* opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  z-index: 100; */
 }
 
+.itemContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .infoItem {
-  @apply bg-white z-50 shadow-sm rounded-sm;
+  @apply bg-white z-10 shadow-sm rounded-sm;
   width: 13.7vw;
   height: 80%;
   
@@ -171,7 +192,13 @@
 
 .subscribeContainer {
   @apply flex flex-col justify-center items-center w-1/2 h-full ;
-  
+  /* opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; */
+}
+.subscribeContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .subscribeTextArea {

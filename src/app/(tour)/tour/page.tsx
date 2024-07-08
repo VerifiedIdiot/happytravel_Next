@@ -3,6 +3,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
+import { TourIntroSection } from './_components/TourSection';
 
 export const metadata: Metadata = {
   title: 'SEARCH YOUR TOUR TO TRAVEL AROUND!',
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
 const TourPage = () => {
 
 return (
-    <></>
+    <>
+    <TourIntroSection/>
+    </>
 )
 }
 

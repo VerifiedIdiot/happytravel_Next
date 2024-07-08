@@ -1,0 +1,9 @@
+.imageSection {
+    @apply relative flex w-full z-10;
+    height: 100dvh;
+}
+
+.imageItem {
+    @apply w-full object-cover;
+    
+  }

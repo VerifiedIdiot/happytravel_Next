@@ -1,4 +1,3 @@
-import { PropsWithChildren, ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '@/styles/home/home.module.css'
@@ -14,12 +13,26 @@ import {
   faHeadset,
 } from '@fortawesome/free-solid-svg-icons'
 import { fetchCountryCount, fetchTopPackages } from '@/api/home/ServerAPI'
-import StyledSlider from '@/components/client/slick/Carousel'
-import StyledTop5List from '@/components/client/Top5Item/Top5Items'
-import SubscribeEmail from '@/components/client/SubscribeEmail/SubscribeEmail'
 import { CountryCount, TopPackage } from '@/types/Home'
-
+import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
+
+const StyledSlider = dynamic(() => import('@/components/client/slick/Carousel'), {
+  ssr: false,
+  suspense: true,
+});
+
+const StyledTop5List = dynamic(() => import('@/components/client/Top5Item/Top5Items'), {
+  ssr: false,
+  suspense: true,
+});
+
+const SubscribeEmail = dynamic(() => import('@/components/client/SubscribeEmail/SubscribeEmail'), {
+  ssr: false,
+  suspense: true,
+});
+
+
 
 const StyledLinkItems = () => {
   return (
@@ -47,6 +60,10 @@ const StyledLinkItems = () => {
 }
 
 const Introduce = () => {
+  // const { ref, inView, entry } = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0.1,
+  // })
   return (
     <>
       <section className={styles.introSection}>
@@ -58,7 +75,9 @@ const Introduce = () => {
           </h2>
         </div>
         <div className={styles.searchContainer}>
+          <Suspense>
           <StyledSearch />
+          </Suspense>
           <h2 className='text-white text-xl mt-8 saturate-50'>아니면 검색, 특징들</h2>
           <StyledLinkItems />
         </div>
@@ -88,6 +107,11 @@ export const SliderSection = () => {
 }
 
 export const ItemSection = () => {
+  // const { ref, inView, entry } = useInView({
+  //   triggerOnce: true,
+    
+  // })
+
   const departments = [
     {
       name: '최저 가격 보장',
@@ -116,7 +140,7 @@ export const ItemSection = () => {
   ]
   return (
     <>
-      <section className={styles.itemSection}>
+       <section className={styles.itemSection}>
         <div className={styles.itemContainer}>
           {departments.map((item, index) => (
             <div key={index} className={styles.infoItem}>
@@ -135,16 +159,6 @@ export const ItemSection = () => {
 
 export const FeaturedSection = async () => {
   const data: CountryCount[] = await fetchCountryCount()
-  // const [isClient, setIsClient] = useState(false);
-
-  // // 다이나믹 임포트를 설정
-  // const DynamicStyledSlider = dynamic(() => import('@/components/client/slick/Carousel'), {
-  //   ssr: false, // 서버 사이드 렌더링 비활성화
-  // })
-
-  // const ServerRenderedSlider = dynamic(() => import('@/components/client/slick/Carousel'), {
-  //   ssr: true, // 서버 사이드 렌더링 활성화
-  // })
 
   return (
     <>
@@ -157,7 +171,9 @@ export const FeaturedSection = async () => {
             </h2>
           </div>
           <div className={styles.carouselContainer}>
+            <Suspense>
             <StyledSlider data={data} />
+            </Suspense>
           </div>
         </div>
       </section>
@@ -179,7 +195,9 @@ export const TopPackagesSection = async () => {
             </h2>
           </div>
           <div className={styles.packageContainer}>
+            <Suspense>
             <StyledTop5List data={data} />
+            </Suspense>
           </div>
         </div>
       </section>
@@ -188,6 +206,11 @@ export const TopPackagesSection = async () => {
 }
 
 export const SubscribeSection = async () => {
+  // const { ref, inView, entry } = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0.1,
+  // })
+
   return (
     <>
       <section className={styles.subscribeSection}>
@@ -199,7 +222,8 @@ export const SubscribeSection = async () => {
               blind texts. Separated they live in
             </p>
             <div className={styles.inputArea}>
-              <SubscribeEmail />
+              <Suspense><SubscribeEmail /></Suspense>
+              
             </div>
           </div>
         </div>
