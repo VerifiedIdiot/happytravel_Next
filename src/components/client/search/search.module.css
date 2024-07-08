@@ -1,0 +1,21 @@
+.container {
+    @apply flex w-3/4;
+    height: 75px;
+  }
+  
+  .input {
+    @apply flex justify-center items-center h-full w-2/5 shadow-xl p-5 outline-none;
+  }
+  
+  .customSelect {
+    @apply h-full w-2/5 shadow-xl p-5 outline-none;
+  }
+  
+  .button {
+    @apply flex justify-center items-center h-full w-1/5 bg-customRed ;
+  }
+  
+  .buttonText {
+    @apply text-white;
+  }
+  

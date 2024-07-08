@@ -13,7 +13,7 @@ interface StyledTop5Props {
 }
 
 const StyledTop5List: React.FC<StyledTop5Props> = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,

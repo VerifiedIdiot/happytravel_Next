@@ -171,15 +171,46 @@
 
 .subscribeContainer {
   @apply flex flex-col justify-center items-center w-1/2 h-full ;
-  border: 1px solid black;
+  
 }
 
-.subscribeTextContainer {
-  @apply flex justify-center items-center h-2/5 w-full;
-  border: 1px solid black;
+.subscribeTextArea {
+  @apply flex flex-col justify-center items-center h-2/5 w-3/5;
+  /* border: 1px solid black; */
+}
+
+.subscribeTextArea h2 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 40px;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  text-align: center;
+  unicode-bidi: isolate;
+}
+
+.subscribeTextArea p {
+  display: block;
+  margin-bottom: 1rem;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.8;
+    font-weight: 300;
+    text-align: center;
 }
 
 .inputContainer {
   @apply flex justify-center items-center h-2/5 w-full;
-  border: 1px solid black;
+  
+}
+
+
+.inputArea {
+  @apply flex justify-center items-center h-2/5 w-full;
+  
+
 }

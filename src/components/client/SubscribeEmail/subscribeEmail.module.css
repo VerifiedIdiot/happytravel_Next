@@ -1,0 +1,47 @@
+/* 기본 스타일 */
+.wrapper {
+    @apply flex justify-center items-center w-3/4 h-4/5;
+  }
+  
+  .styledInput {
+    @apply w-2/3 h-2/3;
+    padding: 8px;
+    background: transparent;
+    border: 0.5px solid white;
+    outline: none; 
+    color: white; 
+    caret-color: white;
+  }
+  
+  /* Placeholder 스타일 */
+  .styledInput::placeholder {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* 벤더 프리픽스를 포함한 Placeholder 스타일 */
+  .styledInput::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .styledInput:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .styledInput::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .styledInput:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .styledInput:focus {
+    outline: none;
+    border: 0.5px solid white; 
+  }
+  
+  .styledSearch {
+    @apply w-1/3 h-2/3;
+    border: 0.5px solid white;
+  }
+  

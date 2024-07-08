@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '@/styles/home/home.module.css'
-import { StyledSearch } from '@/components/client/Search'
+import { StyledSearch } from '@/components/client/search/Search'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faPlane,
@@ -16,6 +16,7 @@ import {
 import { fetchCountryCount, fetchTopPackages } from '@/api/home/ServerAPI'
 import StyledSlider from '@/components/client/slick/Carousel'
 import StyledTop5List from '@/components/client/Top5Item/Top5Items'
+import SubscribeEmail from '@/components/client/SubscribeEmail/SubscribeEmail'
 import { CountryCount, TopPackage } from '@/types/Home'
 
 import dynamic from 'next/dynamic'
@@ -26,19 +27,19 @@ const StyledLinkItems = () => {
       <Link href={'/flight'}>
         <button className={`${styles.button} ${styles.buttonFlight}`}>
           <FontAwesomeIcon icon={faPlane} className='buttonIcon mr-2' />
-          <span className='buttonText'>항공권</span>
+          <span>항공권</span>
         </button>
       </Link>
       <Link href={'/hotel'}>
         <button className={`${styles.button} ${styles.buttonHotel}`}>
           <FontAwesomeIcon icon={faBed} className='buttonIcon mr-2' />
-          <span className='buttonText'>숙소</span>
+          <span>숙소</span>
         </button>
       </Link>
       <Link href={'/agency'}>
         <button className={`${styles.button} ${styles.buttonGuide}`}>
           <FontAwesomeIcon icon={faSuitcaseRolling} className='buttonIcon mr-2' />
-          <span className='buttonText'>가이드</span>
+          <span>가이드</span>
         </button>
       </Link>
     </div>
@@ -66,7 +67,7 @@ const Introduce = () => {
   )
 }
 
-export const SliderSection = ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+export const SliderSection = () => {
   return (
     <>
       <section className={styles.imageSection}>
@@ -86,7 +87,7 @@ export const SliderSection = ({ children }: { children: ReactNode }, props: Prop
   )
 }
 
-export const ItemSection = ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+export const ItemSection = () => {
   const departments = [
     {
       name: '최저 가격 보장',
@@ -132,7 +133,7 @@ export const ItemSection = ({ children }: { children: ReactNode }, props: PropsW
   )
 }
 
-export const FeaturedSection = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+export const FeaturedSection = async () => {
   const data: CountryCount[] = await fetchCountryCount()
   // const [isClient, setIsClient] = useState(false);
 
@@ -164,7 +165,7 @@ export const FeaturedSection = async ({ children }: { children: ReactNode }, pro
   )
 }
 
-export const TopPackages = async ({ children }: { children: ReactNode }, props: PropsWithChildren) => {
+export const TopPackagesSection = async () => {
   const data: TopPackage[] = await fetchTopPackages()
 
   return (
@@ -186,13 +187,21 @@ export const TopPackages = async ({ children }: { children: ReactNode }, props: 
   )
 }
 
-export const Subscribe = async () => {
+export const SubscribeSection = async () => {
   return (
     <>
       <section className={styles.subscribeSection}>
         <div className={styles.subscribeContainer}>
-          <div className={styles.subscribeTextContainer}></div>
-          <div className={styles.inputContainer}></div>
+          <div className={styles.subscribeTextArea}>
+            <h2>Subcribe to our Newsletter</h2>
+            <p>
+              Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
+              blind texts. Separated they live in
+            </p>
+            <div className={styles.inputArea}>
+              <SubscribeEmail />
+            </div>
+          </div>
         </div>
       </section>
     </>
