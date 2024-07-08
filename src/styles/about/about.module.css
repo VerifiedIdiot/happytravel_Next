@@ -7,31 +7,50 @@
   background-image: url('/asset/image/island.webp');
 }
 
+.itemArea {
+  @apply flex text-white m-4;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.itemBox {
+  @apply mx-2 font-thin;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.itemBox:hover {
+  @apply font-semibold;
+}
+
 .infoSection {
   @apply flex flex-col items-center w-full py-8 relative z-10 m-24;
-  
 }
 
 .infoContainer {
-  @apply flex flex-wrap justify-center w-full max-w-6xl mx-auto;
+  @apply flex flex-col md:flex-row justify-center w-full max-w-6xl mx-auto;
+}
+
+.itemDetailsContainer {
+  @apply flex flex-col md:flex-col w-full md:ml-0;
+}
+
+.itemDescription {
+  @apply w-11/12 md:flex-row mx-4;
 }
 
 .itemTextContainer {
-  @apply flex flex-row justify-around w-full mx-4 text-xl;
+  @apply flex flex-col md:flex-row justify-around w-full text-xl;
 }
 
 .infoItem {
-  @apply bg-transparent h-16 w-1/2 text-customGray;
-  width: 7rem;
-  height: 3rem;
+  @apply flex flex-col md:flex-row justify-center bg-transparent h-16 w-full md:w-full text-customGray mb-4 md:mb-0;
 }
 
 .departmentInfo {
-  @apply flex flex-col justify-center items-center w-full h-full transition-all duration-300;
+  @apply flex flex-col justify-center items-center w-full h-full transition-all duration-300 rounded-full;
 }
 
 .selected {
-  @apply rounded-full bg-customBlue text-white;
+  @apply rounded-full w-11/12 bg-customBlue text-white mx-auto;
 }
 
 .descriptionSection {
@@ -44,23 +63,26 @@
 }
 
 .itemInfoContainer {
-  @apply flex justify-center items-center h-4/5 ;
-  width: 72rem;
-  /* gap: 20px; */
+  @apply flex justify-center items-center h-4/5 w-full;
+  /* width: 72rem; */
+}
+
+.itemImageContainer {
+  @apply w-full;
 }
 
 .itemImageArea {
-  @apply object-cover w-1/3 h-full;
+  @apply object-cover mb-8 p-4;
   flex: 1;
-  max-width: 50%;
+  max-width: 100%;
 }
 
 .itemImageArea img {
-  height: 23rem;
+  @apply h-96 w-full object-cover;
 }
 
 .itemTextArea {
-  @apply flex flex-col w-2/3 h-full my-8 ml-8;
+  @apply flex flex-col w-full h-full my-8;
   flex: 2;
 }
 
@@ -71,10 +93,12 @@
 .itemTextArea p {
   @apply text-sm;
   color: #4d4d4d;
+  line-height: 1.6rem;
 }
 
 .faqsection {
-  @apply flex flex-row justify-center items-center w-full bg-gray-100 p-24;
+  @apply flex flex-row justify-center items-center w-full p-24;
+  background-color: #f8faff;
 }
 
 .faqContainer {
@@ -84,7 +108,6 @@
 .textArea {
   @apply text-left mb-8;
 }
-
 
 .cardContainer {
   @apply flex flex-wrap w-full mb-32;
@@ -101,22 +124,27 @@
 
 .cardBox {
   @apply bg-white mb-4 relative;
-  
+  border: 1px solid #ccc;
 }
 .cardBox h3 {
-  @apply p-4 ; 
-  border: 1px solid #ccc;
+  @apply p-4;
 }
 
 .cardBox p {
   @apply p-4;
-  border: 1px solid #ccc;
 }
 
 .cardHeader {
   @apply w-full md:w-1/2 px-2;
-  
+}
+.answer {
+  @apply transition-all duration-300;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
-
-/* 'bg-white p-4 border-gray-300 mb-4' */
+.answer.open {
+  max-height: 500px;
+  opacity: 1;
+}
