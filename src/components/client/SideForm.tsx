@@ -1,67 +1,67 @@
 'use client'
 
-import styles from '@/styles/sales/hotels.module.css'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import styles from '@/styles/sales/hotels.module.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Hotel } from '@/types/Hotel'
-import { Country } from '@/types/Country'
-import { fetchCountryList } from '@/api/hotel/ServerAPI'
+import { Country } from '@/types/Country';
+import { fetchCountryList } from '@/api/hotel/ServerAPI';
 
+interface SideFormProps {
+  onSearch: (searchParams: any) => void;
+}
 
-const SideForm: React.FC = () => {
-
-  
-  const [countries, setCountries] = useState<Country[]>([]) 
-  const [leftValue, setLeftValue] = useState<number>(1000)
-  const [rightValue, setRightValue] = useState<number>(5000)
-  const [selectedOption, setSelectedOption] = useState<string>('')
+export const SideForm: React.FC<SideFormProps> = ({ onSearch }) => {
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [leftValue, setLeftValue] = useState<number>(0);
+  const [rightValue, setRightValue] = useState<number>(5000);
+  const [selectedOption, setSelectedOption] = useState<string>('');
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
   useEffect(() => {
     const getCountries = async () => {
       try {
-        const countryData = await fetchCountryList()
-        setCountries(countryData)
+        const countryData = await fetchCountryList();
+        setCountries(countryData);
       } catch (error) {
-        console.error('Error fetching countries:', error)
+        console.error('Error fetching countries:', error);
       }
-    }
+    };
 
-    getCountries()
-  }, [])
+    getCountries();
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOption(event.target.value)
-  }
+    setSelectedOption(event.target.value);
+  };
 
   const handleLeftChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Math.min(Number(event.target.value), rightValue - 10)
-    setLeftValue(value)
-  }
+    const value = Math.min(Number(event.target.value), rightValue - 10);
+    setLeftValue(value);
+  };
 
   const handleRightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Math.max(Number(event.target.value), leftValue + 10)
-    setRightValue(value)
-  }
+    const value = Math.max(Number(event.target.value), leftValue + 10);
+    setRightValue(value);
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    
+    event.preventDefault();
+    console.log(selectedOption)
     const searchParams = {
       country: selectedOption,
       minPrice: leftValue,
-      maxPrice: rightValue
-    }
+      maxPrice: rightValue,
+      startDate: startDate ? startDate.toISOString().split('T')[0] : '',
+      endDate: endDate ? endDate.toISOString().split('T')[0] : '',
+    };
 
-    // 검색 요청을 서버로 보냄
-    // 예: fetch('/api/search', { method: 'POST', body: JSON.stringify(searchParams) })
-    console.log(searchParams)
-  }
+    onSearch(searchParams);
+  };
 
-  const leftPercent = ((leftValue - 0) / (120000 - 0)) * 100
-  const rightPercent = ((rightValue - 0) / (120000 - 0)) * 100
+  const leftPercent = ((leftValue - 0) / (120000 - 0)) * 100;
+  const rightPercent = ((rightValue - 0) / (120000 - 0)) * 100;
 
   return (
     <div className={styles.itemSideBar}>
@@ -72,8 +72,8 @@ const SideForm: React.FC = () => {
             <input type='text' placeholder='Destination, City' />
           </div>
           <div className={styles.formBox}>
-          <select id='hotel' value={selectedOption} onChange={handleChange}>
-              <option value=''>Select a country</option>
+            <select id='hotel' value={selectedOption} onChange={handleChange}>
+              <option>Select a country</option>
               {countries.map((country) => (
                 <option key={country.countryCode} value={country.koreanName}>
                   {country.koreanName}
@@ -140,7 +140,5 @@ const SideForm: React.FC = () => {
         </div>
       </form>
     </div>
-  )
-}
-
-export default SideForm
+  );
+};

@@ -1,12 +1,14 @@
 'use client'
 import React, { useReducer, useEffect, ReactNode } from 'react'
 import styles from '@/styles/sales/hotels.module.css'
-import { fetchHotelList } from '@/api/hotel/ServerAPI'
+import { fetchHotelList, hotelSearch } from '@/api/hotel/ServerAPI'
 import Pagination from '@/components/Pagination'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMap } from '@fortawesome/free-regular-svg-icons'
 import { hotelReducer, hotelListState } from '@/reducers/hotel/HotelListReducer'
 import { Hotel, HotelCntList, HotelAction } from '@/types/Hotel'
+import { SideForm } from '@/components/client/SideForm';
+
 
 export const IntroSection = ({ children }: { children: ReactNode }) => {
   return (
@@ -29,35 +31,49 @@ interface ItemSectionProps {
 }
 
 export const ItemSection = ({ children }: ItemSectionProps) => {
-  const [state, dispatch] = useReducer<React.Reducer<HotelCntList, HotelAction>>(hotelReducer, hotelListState)
+  const [state, dispatch] = useReducer<React.Reducer<HotelCntList, HotelAction>>(hotelReducer, hotelListState);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data: Hotel[] = await fetchHotelList()
-      dispatch({ type: 'SET_HOTEL_LIST', payload: data })
-      dispatch({ type: 'SET_HOTEL_CNT', payload: data.length })
-      dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) })
-    }
+      const data: Hotel[] = await hotelSearch({});
+      dispatch({ type: 'SET_HOTEL_LIST', payload: data });
+      dispatch({ type: 'SET_HOTEL_CNT', payload: data.length });
+      dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) });
+    };
 
-    fetchData()
-  }, [state.itemsPerPage])
+    fetchData();
+  }, [state.itemsPerPage]);
 
   const handlePageChange = (page: number) => {
-    dispatch({ type: 'SET_CURRENT_PAGE', payload: page })
-  }
+    dispatch({ type: 'SET_CURRENT_PAGE', payload: page });
+  };
 
   const renderStars = (rating: number) => {
-    return '★'.repeat(rating) + '☆'.repeat(5 - rating)
-  }
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  };
 
-  const startIndex = (state.currentPage - 1) * state.itemsPerPage
-  const endIndex = startIndex + state.itemsPerPage
-  const currentItems = state.hotelList.slice(startIndex, endIndex)
+  const startIndex = (state.currentPage - 1) * state.itemsPerPage;
+  const endIndex = startIndex + state.itemsPerPage;
+  const currentItems = state.hotelList.slice(startIndex, endIndex);
+
+  const handleSearch = async (searchParams: any) => {
+    // console.log('handleSearch called with:', searchParams);
+    const data: Hotel[] = await hotelSearch(searchParams);
+    console.log('Fetched data:', data); // 응답 데이터 확인
+    dispatch({ type: 'SET_HOTEL_LIST', payload: data });
+    dispatch({ type: 'SET_HOTEL_CNT', payload: data.length });
+    dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) });
+    dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 }); // 검색 시 첫 페이지로 이동
+  };
+
+  console.log('Current items:', currentItems); // 현재 렌더링되는 아이템 확인
 
   return (
     <div className='w-3/4 mt-16 mb-16'>
       <section className={styles.itemSection}>
-        <div className={styles.itemLeftContainer}>{children}</div>
+        <div className={styles.itemLeftContainer}>
+          <SideForm onSearch={handleSearch} />
+        </div>
         <div className={styles.itemRightContainer}>
           <div className={styles.itemArea}>
             <div className={styles.itemBoxList}>
@@ -109,5 +125,5 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};

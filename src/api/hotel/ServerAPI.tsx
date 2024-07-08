@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from 'axios'
 import apiClient from '@/lib/AxiosConfig'
 import { Hotel } from '@/types/Hotel'
 import { Country } from '@/types/Country'
@@ -23,3 +24,26 @@ export const fetchCountryList = async (): Promise<Country[]> => {
     throw error
   }
 }
+
+export const hotelSearch = async (searchParams: any): Promise<Hotel[]> => {
+  try {
+    
+    const config: AxiosRequestConfig = {
+      params: {
+        country: searchParams.country,
+        minPrice: searchParams.minPrice,
+        maxPrice: searchParams.maxPrice,
+        startDate: searchParams.startDate,
+        endDate: searchParams.endDate,
+      },
+    };
+    
+    // console.log('Search parameters:', searchParams); // 검색 조건 확인
+    const response = await apiClient.get<Hotel[]>('/hotels/api/hotel-search', config.params);
+    console.log('API response:', response.data); // 응답 데이터 확인
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching hotel list:', error);
+    throw error;
+  }
+};
