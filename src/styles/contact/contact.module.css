@@ -1,0 +1,53 @@
+.imageSection {
+  @apply relative flex w-full z-10;
+  height: 100dvh;
+}
+
+.introItem {
+  @apply flex flex-col justify-center items-center absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.itemBox {
+  @apply mx-2 font-thin text-white my-4;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.itemArea {
+  @apply flex flex-row;
+}
+
+.itemSection {
+  @apply flex flex-col w-3/4 z-10 pt-24 pb-24 items-center;
+  height: auto;
+}
+
+.contactItem {
+  @apply w-3/5 h-full md:w-4/5;
+}
+
+.contactItem h1 {
+  font-size: 1.5rem;
+}
+
+.profileContainer {
+  @apply w-full flex flex-col md:flex-col p-8 justify-center;
+}
+
+.profileBox {
+  @apply flex flex-col md:flex-row items-center p-4;
+}
+
+.profileimage {
+  @apply rounded w-52 h-48 mb-4;
+}
+
+.itemLink {
+  @apply text-gray-600;
+}
+
+.itemLink:hover {
+  @apply text-customRed;
+}
