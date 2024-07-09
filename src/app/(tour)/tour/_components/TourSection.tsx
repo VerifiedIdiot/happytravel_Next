@@ -3,6 +3,8 @@ import styles from '@/styles/tour/tour.module.css'
 import Link from 'next/link'
 import { TourFilter } from './TourFilter'
 import { TourDashboard } from './TourDashboard'
+import { TourPackage } from '@/types/Tour'
+import { fetchTourPackages } from '@/api/tour/ServerAPI';
 
 export const TourIntroSection = () => {
   return (
@@ -32,13 +34,17 @@ export const TourIntroSection = () => {
   )
 }
 
-export const TourDashboardSection = () => {
+
+
+export const TourDashboardSection  = async () => {
+  const data : TourPackage[] = await fetchTourPackages({})
+  console.log(data)
   return (
     <>
       <section className={styles.tourDashboardSection}>
         <div className={styles.tourDashboardContainer}>
           <TourFilter />
-          <TourDashboard/>
+          <TourDashboard data={data}/>
         </div>
       </section>
     </>

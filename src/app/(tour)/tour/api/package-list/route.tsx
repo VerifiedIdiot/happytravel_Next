@@ -21,7 +21,7 @@ export const GET = async (req: NextRequest) => {
   Object.keys(params).forEach(key => {
     const value = params[key];
     if (value !== null && value !== undefined) {
-      url.searchParams.append(key, String(value)); // String()을 사용하여 문자열로 변환
+      url.searchParams.append(key, String(value)); 
     }
   });
 
