@@ -7,3 +7,22 @@
     @apply w-full object-cover;
     
   }
+
+.TourDashboardSection {
+    @apply flex justify-center items-center w-full;
+    height: 140dvh;
+}
+
+.TourDashboardContainer {
+    @@apply flex justify-center items-center;
+    width: 60%;
+    height:80%;
+    border: 1px solid black;
+}
+
+.TourFilterContainer {
+    @apply flex flex-col justify-center items-center;
+    width: 30%;
+    height: 80%;
+    border: 1px solid black;
+}

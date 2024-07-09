@@ -66,7 +66,7 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
     dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 }); // 검색 시 첫 페이지로 이동
   };
 
-  console.log('Current items:', currentItems); // 현재 렌더링되는 아이템 확인
+  
 
   return (
     <div className='w-3/4 mt-16 mb-16'>
