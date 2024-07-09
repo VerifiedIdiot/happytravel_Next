@@ -4,7 +4,7 @@ import { CountryCount , TopPackage} from "@/types/Home";
 const BASE_URL: string = process.env.NEXT_PUBLIC_BASE_URL!;
 
 
-export const fetchCountryCount = async (): Promise<CountryCount[]> => {
+export const fetchCountryCount = async () => {
   
   const response = await apiClient.get<CountryCount[]>(`${BASE_URL}/home/api/country-count`)
   return response.data

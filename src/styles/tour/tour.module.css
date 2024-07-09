@@ -8,21 +8,76 @@
     
   }
 
-.TourDashboardSection {
-    @apply flex justify-center items-center w-full;
-    height: 140dvh;
+  .introItem {
+    @apply flex flex-col justify-center items-center absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.introItem h1 {
+    @apply text-white text-5xl;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size:calc(15px + 2.5vw);
+    
+    text-align: center;
 }
 
-.TourDashboardContainer {
-    @@apply flex justify-center items-center;
-    width: 60%;
+.introItem p {
+    @apply text-white;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.tourDashboardSection {
+    @apply flex justify-center w-full;
+    height: 150dvh;
+}
+
+.tourDashboardContainer {
+    @apply flex justify-between;
+    margin-top: 10vh;
+    width: 72%;
     height:80%;
     border: 1px solid black;
 }
 
-.TourFilterContainer {
-    @apply flex flex-col justify-center items-center;
-    width: 30%;
-    height: 80%;
+.tourFilterItem {
+    @apply flex flex-col;
+    width: 23%;
+    height: 70%;
+    /* border: 1px solid black; */
+    padding: 25px;
+}
+
+.filterWrapper {
+    @apply flex flex-col justify-around items-center w-full h-full;
+    
+    
+}
+
+.filterContent {
+    @apply w-full;
+    height: 9%;
+    border: 1px solid black;
+
+}
+
+.searchBtn {
+    @apply w-full;
+    height: 10%;
     border: 1px solid black;
 }
+
+.tourDashItem {
+    @apply flex  justify-center items-center;
+    width: 75%;
+    height: 100%;
+    border: 1px solid black;
+}
+

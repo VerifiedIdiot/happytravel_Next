@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import styles from '@/styles/tour/tour.module.css'
+import Link from 'next/link'
 import { TourFilter } from './TourFilter'
+import { TourDashboard } from './TourDashboard'
 
 export const TourIntroSection = () => {
   return (
@@ -16,9 +18,14 @@ export const TourIntroSection = () => {
           placeholder='blur'
           blurDataURL='/asset/image/tour.jpg'
         />
-        <div>
-          <p><span></span><span></span></p>
-          <h1></h1>
+        <div className={styles.introItem}>
+          <p>
+            <span className='mr-2'>
+              <Link href='/'>Home</Link>
+            </span>
+            <span>TOUR</span>
+          </p>
+          <h1>Tour Packages</h1>
         </div>
       </section>
     </>
@@ -28,9 +35,10 @@ export const TourIntroSection = () => {
 export const TourDashboardSection = () => {
   return (
     <>
-      <section className={styles.TourDashboardSection}>
-        <div className={styles.TourDashboardContainer}>
-        <TourFilter/>
+      <section className={styles.tourDashboardSection}>
+        <div className={styles.tourDashboardContainer}>
+          <TourFilter />
+          <TourDashboard/>
         </div>
       </section>
     </>
