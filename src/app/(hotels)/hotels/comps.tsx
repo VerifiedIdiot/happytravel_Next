@@ -1,23 +1,26 @@
 'use client'
+
 import React, { useReducer, useEffect, ReactNode } from 'react'
 import styles from '@/styles/sales/hotels.module.css'
 import { fetchHotelList, hotelSearch } from '@/api/hotel/ServerAPI'
 import Pagination from '@/components/Pagination'
+import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMap } from '@fortawesome/free-regular-svg-icons'
 import { hotelReducer, hotelListState } from '@/reducers/hotel/HotelListReducer'
 import { Hotel, HotelCntList, HotelAction } from '@/types/Hotel'
-import { SideForm } from '@/components/client/SideForm';
-
+import { SideForm } from '@/components/client/SideForm'
 
 export const IntroSection = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <section className={styles.introSection}>
         <div className={styles.introContainer}>
-          <div className='flex text-white m-4'>
-            <p className='mx-2 font-normal'>HOME</p>
-            <p className='mx-2 font-thin'>HOTEL</p>
+          <div className={styles.itemArea}>
+            <Link href='/' className={styles.itemBox}>
+              HOME
+            </Link>
+            <p className={styles.itemBox}>HOTEL</p>
           </div>
           <h1 className='text-white text-6xl font-black'>Hotels</h1>
         </div>
@@ -31,45 +34,57 @@ interface ItemSectionProps {
 }
 
 export const ItemSection = ({ children }: ItemSectionProps) => {
-  const [state, dispatch] = useReducer<React.Reducer<HotelCntList, HotelAction>>(hotelReducer, hotelListState);
+  const [state, dispatch] = useReducer<React.Reducer<HotelCntList, HotelAction>>(hotelReducer, hotelListState)
 
   useEffect(() => {
     const fetchData = async () => {
-      const data: Hotel[] = await hotelSearch({});
-      dispatch({ type: 'SET_HOTEL_LIST', payload: data });
-      dispatch({ type: 'SET_HOTEL_CNT', payload: data.length });
-      dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) });
-    };
+      try {
+        const data: Hotel[] = await hotelSearch({})
+        console.log('Fetched data:', data)
+        dispatch({ type: 'SET_HOTEL_LIST', payload: data })
+        dispatch({ type: 'SET_HOTEL_CNT', payload: data.length })
+        dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) })
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
 
-    fetchData();
-  }, [state.itemsPerPage]);
+    fetchData()
+  }, [state.itemsPerPage])
 
   const handlePageChange = (page: number) => {
-    dispatch({ type: 'SET_CURRENT_PAGE', payload: page });
-  };
+    dispatch({ type: 'SET_CURRENT_PAGE', payload: page })
+  }
 
   const renderStars = (rating: number) => {
-    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
-  };
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating)
+  }
 
-  const startIndex = (state.currentPage - 1) * state.itemsPerPage;
-  const endIndex = startIndex + state.itemsPerPage;
-  const currentItems = state.hotelList.slice(startIndex, endIndex);
+  const startIndex = (state.currentPage - 1) * state.itemsPerPage
+  const endIndex = startIndex + state.itemsPerPage
+  const currentItems = state.hotelList.slice(startIndex, endIndex)
 
   const handleSearch = async (searchParams: any) => {
-    // console.log('handleSearch called with:', searchParams);
-    const data: Hotel[] = await hotelSearch(searchParams);
-    console.log('Fetched data:', data); // 응답 데이터 확인
-    dispatch({ type: 'SET_HOTEL_LIST', payload: data });
-    dispatch({ type: 'SET_HOTEL_CNT', payload: data.length });
-    dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) });
-    dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 }); // 검색 시 첫 페이지로 이동
-  };
+    try {
+      const data: Hotel[] = await hotelSearch(searchParams)
+      console.log('Fetched data:', data)
+      dispatch({ type: 'SET_HOTEL_LIST', payload: data })
+      dispatch({ type: 'SET_HOTEL_CNT', payload: data.length })
+      dispatch({ type: 'SET_TOTAL_PAGE', payload: Math.ceil(data.length / state.itemsPerPage) })
+      dispatch({ type: 'SET_CURRENT_PAGE', payload: 1 })
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    }
+  }
 
-  
+  console.log('Current items:', currentItems)
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('ko-KR').format(price)
+  }
 
   return (
-    <div className='w-3/4 mt-16 mb-16'>
+    <div className={styles.itemWrapper}>
       <section className={styles.itemSection}>
         <div className={styles.itemLeftContainer}>
           <SideForm onSearch={handleSearch} />
@@ -91,7 +106,7 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
                           <span className={styles.ratingText}>Rating</span>
                         </div>
                         <div>
-                          <p>{item.price}원</p>
+                          <p>{formatPrice(item.price)}원</p>
                         </div>
                       </div>
                       <div className={styles.detailContainer}>
@@ -103,7 +118,7 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
                       <div className={styles.labelContainer}>
                         <div className={styles.regionInfoItem}>
                           <FontAwesomeIcon icon={faMap} className={styles.map} />{' '}
-                          <p className='ml-1 opacity-50'>
+                          <p className={styles.regionBox}>
                             {item.country}, {item.region}
                           </p>
                         </div>
@@ -125,5 +140,5 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
