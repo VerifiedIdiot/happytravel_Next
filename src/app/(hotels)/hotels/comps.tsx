@@ -79,6 +79,10 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
 
   console.log('Current items:', currentItems)
 
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('ko-KR').format(price)
+  }
+
   return (
     <div className={styles.itemWrapper}>
       <section className={styles.itemSection}>
@@ -102,7 +106,7 @@ export const ItemSection = ({ children }: ItemSectionProps) => {
                           <span className={styles.ratingText}>Rating</span>
                         </div>
                         <div>
-                          <p>{item.price}원</p>
+                          <p>{formatPrice(item.price)}원</p>
                         </div>
                       </div>
                       <div className={styles.detailContainer}>
