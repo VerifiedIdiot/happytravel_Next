@@ -8,17 +8,39 @@
   background-image: url('/asset/image/hotel.png');
 }
 
+.itemWrapper {
+  @apply w-full mt-16 mb-16 md:w-11/12 flex flex-col;
+}
+
 .itemSection {
-  @apply flex flex-wrap w-full;
-  height: 100%;
+  @apply flex flex-col md:flex-row w-full;
+}
+
+.itemArea {
+  @apply flex text-white m-4;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.itemBox {
+  @apply mx-2 font-thin;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.itemBox:hover {
+  @apply font-semibold;
 }
 
 /* 공통 사이드바 폼 (Left) */
 
 .itemLeftContainer {
-  @apply bg-gray-50;
-  flex: 0 0 25%;
-  max-width: 25%;
+  @apply bg-gray-50 w-full md:w-1/4;
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .itemLeftContainer {
+    @apply w-full;
+  }
 }
 
 .itemSideBar {
@@ -171,8 +193,7 @@
 /* Hotels List (Right) */
 
 .itemRightContainer {
-  flex: 0 0 75%;
-  max-width: 75%;
+  @apply md:w-full;
 }
 
 .itemArea {
@@ -180,13 +201,11 @@
 }
 
 .itemBoxList {
-  @apply flex flex-wrap w-full;
+  @apply flex flex-wrap w-full justify-center;
 }
 
 .itemCard {
-  @apply flex flex-col mx-4 mb-6;
-  width: calc(33.3333% - 2rem);
-  /* box-sizing: border-box; */
+  @apply flex flex-col mx-4 mb-6 w-full md:w-1/4;
 }
 
 .imageContainer {
@@ -209,11 +228,12 @@
 }
 
 .textContainer h1 {
-  @apply text-lg;
+  @apply text-lg text-gray-700;
 }
 
 .textContainer p {
   @apply text-blue-600 font-bold;
+  font-size:small;
 }
 
 .starRating span {
@@ -225,8 +245,10 @@
 }
 
 .detailContainer {
-  @apply w-full flex h-48 px-2 items-start;
+  @apply w-full h-44 px-2 items-start text-gray-700;
   line-height: 1.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .labelContainer {
@@ -235,14 +257,16 @@
 }
 
 .regionInfoItem {
-  @apply flex w-9/12 text-nowrap text-ellipsis;
+  @apply flex w-9/12 text-nowrap text-ellipsis text-gray-700;
+}
+
+.regionBox {
+  @apply ml-1 opacity-50;
+  font-size: small;
 }
 
 .map {
-  font-size: 0.8vw;
-  color: #4d4d4d;
-  opacity: 0.5;
-  font-size: 0.8vw;
+  font-size: small;
   color: #4d4d4d;
   opacity: 0.5;
 }

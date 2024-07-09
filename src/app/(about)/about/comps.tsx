@@ -17,7 +17,7 @@ export const IntroSection = ({ children }: { children: ReactNode }) => {
             <Link href='/' className={styles.itemBox} >
               HOME
             </Link>
-            <p className={styles.itemBox} font-thin>ABOUT</p>
+            <p className={styles.itemBox}>ABOUT</p>
           </div>
           <h1 className='text-white text-6xl font-black'>About Us</h1>
         </div>
